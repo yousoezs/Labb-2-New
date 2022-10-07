@@ -13,3 +13,18 @@ C:\Users\Toni Skoro\Documents\GitHub\New Labb 2\New Labb 2\New Labb 2\obj\Debug\
 C:\Users\Toni Skoro\Documents\GitHub\New Labb 2\New Labb 2\New Labb 2\obj\Debug\net6.0\New Labb 2.pdb
 C:\Users\Toni Skoro\Documents\GitHub\New Labb 2\New Labb 2\New Labb 2\obj\Debug\net6.0\New Labb 2.genruntimeconfig.cache
 C:\Users\Toni Skoro\Documents\GitHub\New Labb 2\New Labb 2\New Labb 2\obj\Debug\net6.0\ref\New Labb 2.dll
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\bin\Debug\net6.0\New Labb 2.exe
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\bin\Debug\net6.0\New Labb 2.deps.json
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\bin\Debug\net6.0\New Labb 2.runtimeconfig.json
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\bin\Debug\net6.0\New Labb 2.dll
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\bin\Debug\net6.0\New Labb 2.pdb
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\obj\Debug\net6.0\New Labb 2.csproj.AssemblyReference.cache
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\obj\Debug\net6.0\New Labb 2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\obj\Debug\net6.0\New Labb 2.AssemblyInfoInputs.cache
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\obj\Debug\net6.0\New Labb 2.AssemblyInfo.cs
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\obj\Debug\net6.0\New Labb 2.csproj.CoreCompileInputs.cache
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\obj\Debug\net6.0\New Labb 2.dll
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\obj\Debug\net6.0\refint\New Labb 2.dll
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\obj\Debug\net6.0\New Labb 2.pdb
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\obj\Debug\net6.0\New Labb 2.genruntimeconfig.cache
+C:\Users\Toni Skoro\Documents\GitHub\Labb-2-New\New Labb 2\New Labb 2\obj\Debug\net6.0\ref\New Labb 2.dll

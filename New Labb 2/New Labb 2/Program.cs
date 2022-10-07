@@ -82,6 +82,13 @@ Exempel:
                             WriteLine("Enter your username!");
                             string input = ReadLine();
                             var user = customers.FirstOrDefault(x => x.Name == input);
+                            if (user == null)
+                            {
+                                WriteLine("No registered user exists, press space to go back!");
+                                ReadKey();
+                                break;
+                            }
+                            WriteLine("User exists...\nType password\n------------------------------");
                             string passW = ReadLine();
                             if (user.VerifyPassword(passW))
                             {
@@ -171,9 +178,29 @@ Exempel:
                         }
                     case ConsoleKey.D2:
                         {
+                            int countK = 0;
+                            int countB = 0;
+                            int countKE = 0;
                             WriteLine("Here is your Cart...\n");
                             string listOutput = String.Join(",", currentCustomer.Cart);
-                            WriteLine($"{listOutput}");
+                            WriteLine($"{listOutput}\n---------");
+                            while (currentCustomer.Cart.Count != countKE)
+                            {
+                                if (listOutput.Contains("Korv"))
+                                {
+                                    countK++;
+                                }
+                                else if (listOutput.Contains("Korv bröd"))
+                                {
+                                    countB++;
+                                }
+                                else if (listOutput.Contains("Ketchup"))
+                                {
+                                    countKE++;
+                                }
+                            }
+
+                            WriteLine($"Total Korv: {countK}\nTotal Bröd: {countB}\nTotal Ketchup: {countKE}");
                             ReadKey();
                             break;
                         }

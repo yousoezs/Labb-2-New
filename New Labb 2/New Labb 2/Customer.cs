@@ -25,9 +25,9 @@ namespace New_Labb_2
 
         public override string ToString()
         {
-            return $"Your Name:{Name}\n" +
-                   $"Your Password:{Password}\n" +
-                   $"Your Cart:{Cart}";
+            return $"Your Name: {Name}\n" +
+                   $"Your Password: {Password}\n" +
+                   $"Your Cart: {Cart}";
         }
         public bool VerifyPassword(string password)
         {
