@@ -65,7 +65,7 @@ Exempel:
             customers.Add(Tjatte);
 
             Customer? currentCustomer = null;
-
+            loggedOut:
 
             while (currentCustomer == null)
             {
@@ -178,33 +178,64 @@ Exempel:
                         }
                     case ConsoleKey.D2:
                         {
+                            Clear();
                             int countK = 0;
                             int countB = 0;
                             int countKE = 0;
-                            WriteLine("Here is your Cart...\n");
+                            WriteLine("Here is your Cart...");
                             string listOutput = String.Join(",", currentCustomer.Cart);
-                            WriteLine($"{listOutput}\n---------");
-                            while (currentCustomer.Cart.Count != countKE)
+                            WriteLine("---------------------");
+                            for (int i = 0; i < currentCustomer.Cart.Count; i++)
                             {
-                                if (listOutput.Contains("Korv"))
+                                string[] words = new string[currentCustomer.Cart.Count];
+                                words = listOutput.Split(",");
+                                if (words[i] == "Korv")
                                 {
                                     countK++;
                                 }
-                                else if (listOutput.Contains("Korv bröd"))
+                                else if (words[i] == "Korv bröd")
                                 {
                                     countB++;
                                 }
-                                else if (listOutput.Contains("Ketchup"))
+                                else if (words[i] == "Ketchup")
                                 {
                                     countKE++;
                                 }
                             }
 
-                            WriteLine($"Total Korv: {countK}\nTotal Bröd: {countB}\nTotal Ketchup: {countKE}");
+                            int totalCartPrice = (Korv.Price * countK) + (Bröd.Price * countB) + (Ketchup.Price * countKE);
+                            WriteLine($"Total Korv 150SEK: {countK}\nTotal Bröd 200SEK: {countB}\nTotal Ketchup 300SEK: {countKE}");
+
+                            WriteLine($"The total cost of your cart is: {totalCartPrice}");
+                            WriteLine("If you wish to head back press any key...");
                             ReadKey();
                             break;
                         }
+                    case ConsoleKey.D3:
+                        {
+                            WriteLine($"Do you wish to checkout? {currentCustomer}.\nType \"Yes\" or \"No\".");
+                            if (ReadLine() == "Yes")
+                            {
+                                WriteLine("Bye bye!");
+                                currentCustomer = null;
+                                Environment.Exit(0);
+                            }
+                            else if (ReadLine() == "No")
+                            {
+                                WriteLine("You may continue...");
+                            }
 
+                            break;
+                        }
+                    case ConsoleKey.D4:
+                        {
+                            WriteLine($"Logging {currentCustomer.Name} out.");
+                            currentCustomer = null;
+                            goto loggedOut;
+                        }
+                    default:
+                        WriteLine("something went wrong...");
+                        break;
                 }
             }
         }
