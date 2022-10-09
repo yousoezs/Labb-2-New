@@ -5,6 +5,7 @@ using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace New_Labb_2
 {
@@ -23,6 +24,10 @@ namespace New_Labb_2
             _cart = new List<Product>();
         }
 
+        public string ReturnCart()
+        {
+
+        }
         public override string ToString()
         {
             return $"Your Name: {Name}\n" +
@@ -32,6 +37,16 @@ namespace New_Labb_2
         public bool VerifyPassword(string password)
         {
             return Password.Equals(password);
+        }
+
+        public int ReturnTotalPrice()
+        {
+            var totalPrice = 0;
+            for (var i = 0; i < Cart.Count; i++)
+            {
+                totalPrice += Cart[i].Price;
+            }
+            return totalPrice;
         }
     }
 }

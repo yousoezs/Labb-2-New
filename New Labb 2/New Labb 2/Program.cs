@@ -50,28 +50,20 @@ Exempel:
         private
         static void Main(string[] args)
         {
-            List<Customer> customers = new List<Customer>();
-
-            Customer Knatte = new("Knatte", "123");
-            Customer Fnatte = new("Fnatte", "321");
-            Customer Tjatte = new("Tjatte", "213");
+            List<Customer> customers = new List<Customer>() { new("Knatte", "123"), new("Fnatte", "321"), new("Tjatte", "213") };
 
             Product Korv = new("Korv", 150);
             Product Bröd = new("Korv bröd", 200);
             Product Ketchup = new("Ketchup", 300);
 
-            customers.Add(Knatte);
-            customers.Add(Fnatte);
-            customers.Add(Tjatte);
-
             Customer? currentCustomer = null;
-            loggedOut:
+        loggedOut:
 
             while (currentCustomer == null)
             {
                 Clear();
                 WriteLine("Welcome, Choose one of the following options!");
-                WriteLine("1. Login\n2. Register");
+                WriteLine("1. Login\n2. Register\n3. Terminate");
                 ConsoleKeyInfo key = ReadKey();
 
                 switch (key.Key)
@@ -84,22 +76,30 @@ Exempel:
                             var user = customers.FirstOrDefault(x => x.Name == input);
                             if (user == null)
                             {
-                                WriteLine("No registered user exists, press space to go back!");
+                                WriteLine("No registered user exists, if you wish to create one, type \"Create\"!");
+                                if (ReadLine() == "Create")
+                                {
+                                    goto case ConsoleKey.D2;
+                                }
                                 ReadKey();
                                 break;
                             }
+
                             WriteLine("User exists...\nType password\n------------------------------");
-                            string passW = ReadLine();
-                            if (user.VerifyPassword(passW))
+                            while (currentCustomer == null)
                             {
-                                currentCustomer = user;
+                                string passW = ReadLine();
+                                if (user.VerifyPassword(passW))
+                                {
+                                    currentCustomer = user;
+                                }
+                                else
+                                {
+                                    WriteLine("Wrong password entered!");
+                                    WriteLine("Try again!");
+                                }
                             }
-                            else
-                            {
-                                WriteLine("Wrong password entered!");
-                                WriteLine("Try again!");
-                                ReadKey();
-                            }
+
                             break;
                         }
                     case ConsoleKey.D2:
@@ -118,10 +118,15 @@ Exempel:
                             }
                             catch (Exception e)
                             {
-                                WriteLine("No Numbers!");
+                                WriteLine("Something went wrong...");
                                 continue;
                             }
                         }
+                    case ConsoleKey.D3:
+                    {
+                            Environment.Exit(0);
+                            break;
+                    }
                 }
             }
             WriteLine($"Welcome {currentCustomer}");
@@ -134,39 +139,36 @@ Exempel:
                           "3. Go to Checkout\n" +
                           "4. Log out.");
                 ConsoleKeyInfo key = ReadKey();
+                var antalKorv = currentCustomer.Cart.Where(x => x.Name == "Korv");
+                var antalBröd = currentCustomer.Cart.Where(x => x.Name == "Korv bröd");
+                var antalKetchup = currentCustomer.Cart.Where(x => x.Name == "Ketchup");
                 switch (key.Key)
                 {
                     case ConsoleKey.D1:
                         {
-                            int countK = 0;
-                            int countB = 0;
-                            int countKE = 0;
                             Clear();
                             WriteLine("Available Products below...\n" +
-                                      $"1. {Korv} 150 SEK\n" +
-                                      $"2. {Bröd} 200 SEK\n" +
-                                      $"3. {Ketchup} 300 SEK\n" +
+                                      $"1. {Korv} {Korv.Price}\n" +
+                                      $"2. {Bröd} {Bröd.Price}\n" +
+                                      $"3. {Ketchup} {Ketchup.Price}\n" +
                                        "4. Go Back.");
                             while (key.Key != ConsoleKey.D4)
                             {
                                 ConsoleKeyInfo key2 = ReadKey();
                                 if (key2.Key == ConsoleKey.D1)
                                 {
-                                    countK++;
                                     currentCustomer.Cart.Add(Korv);
-                                    WriteLine($"You now have {countK} of Korv");
+                                    WriteLine($"You now have {antalKorv.Count()} of Korv");
                                 }
                                 else if (key2.Key == ConsoleKey.D2)
                                 {
-                                    countB++;
                                     currentCustomer.Cart.Add(Bröd);
-                                    WriteLine($"You now have {countB} of Bröd");
+                                    WriteLine($"You now have {antalBröd.Count()} of Bröd");
                                 }
                                 else if (key2.Key == ConsoleKey.D3)
                                 {
-                                    countKE++;
                                     currentCustomer.Cart.Add(Ketchup);
-                                    WriteLine($"You now have {countKE} of Ketchup");
+                                    WriteLine($"You now have {antalKetchup.Count()} of Ketchup");
                                 }
                                 else if (key2.Key == ConsoleKey.D4)
                                 {
@@ -179,34 +181,13 @@ Exempel:
                     case ConsoleKey.D2:
                         {
                             Clear();
-                            int countK = 0;
-                            int countB = 0;
-                            int countKE = 0;
                             WriteLine("Here is your Cart...");
-                            string listOutput = String.Join(",", currentCustomer.Cart);
                             WriteLine("---------------------");
-                            for (int i = 0; i < currentCustomer.Cart.Count; i++)
-                            {
-                                string[] words = new string[currentCustomer.Cart.Count];
-                                words = listOutput.Split(",");
-                                if (words[i] == "Korv")
-                                {
-                                    countK++;
-                                }
-                                else if (words[i] == "Korv bröd")
-                                {
-                                    countB++;
-                                }
-                                else if (words[i] == "Ketchup")
-                                {
-                                    countKE++;
-                                }
-                            }
 
-                            int totalCartPrice = (Korv.Price * countK) + (Bröd.Price * countB) + (Ketchup.Price * countKE);
-                            WriteLine($"Total Korv 150SEK: {countK}\nTotal Bröd 200SEK: {countB}\nTotal Ketchup 300SEK: {countKE}");
 
-                            WriteLine($"The total cost of your cart is: {totalCartPrice}");
+                            WriteLine($"Korv A-Pris: {Korv.Price} | Antal Korv: {antalKorv.Count()}\nBröd A-pris: {Bröd.Price} | Antal Bröd: {antalBröd.Count()}\nKetchup A-Pris: {Ketchup.Price} | Antal Ketchup: {antalKetchup.Count()}");
+
+                            WriteLine($"The total cost of your cart is: {currentCustomer.ReturnTotalPrice()}");
                             WriteLine("If you wish to head back press any key...");
                             ReadKey();
                             break;
