@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -26,13 +27,20 @@ namespace New_Labb_2
 
         public string ReturnCart()
         {
-
+            var list = Cart.Select(x => x.Name);
+            var antal = string.Empty;
+            foreach (var x in list)
+            {
+                antal += $"{x}\n";
+            }
+            return antal;
         }
         public override string ToString()
         {
+
             return $"Your Name: {Name}\n" +
                    $"Your Password: {Password}\n" +
-                   $"Your Cart: {Cart}";
+                   $"Your Carts listed products: {ReturnCart()}";
         }
         public bool VerifyPassword(string password)
         {
