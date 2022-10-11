@@ -29,9 +29,9 @@ namespace New_Labb_2
         {
             var list = Cart.Select(x => x.Name);
             var antal = string.Empty;
-            foreach (var x in list)
+            for (int i = 0; i <= list.Count(); i++)
             {
-                antal += $"{x}\n";
+                antal = $"{i}";
             }
             return antal;
         }

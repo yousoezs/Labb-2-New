@@ -7,7 +7,6 @@ namespace New_Labb_2
         static void Main(string[] args)
         {
             List<Customer> customers = new List<Customer>() { new("Knatte", "123"), new("Fnatte", "321"), new("Tjatte", "213") };
-
             Product Korv = new("Korv", 150);
             Product Bröd = new("Korv bröd", 200);
             Product Ketchup = new("Ketchup", 300);
@@ -32,12 +31,11 @@ namespace New_Labb_2
                             var user = customers.FirstOrDefault(x => x.Name == input);
                             if (user == null)
                             {
-                                WriteLine("No registered user exists, if you wish to create one, type \"Create\"!");
+                                WriteLine("No registered user exists, if you wish to create one, type \"Create\"!\nOr type in a empty string to try again.");
                                 if (ReadLine() == "Create")
                                 {
                                     goto case ConsoleKey.D2;
                                 }
-                                ReadKey();
                                 break;
                             }
 
