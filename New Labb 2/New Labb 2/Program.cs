@@ -53,7 +53,6 @@ namespace New_Labb_2
                                     WriteLine("Try again!");
                                 }
                             }
-
                             break;
                         }
                     case ConsoleKey.D2:
@@ -153,7 +152,7 @@ namespace New_Labb_2
                                 currentCustomer = null;
                                 goto loggedOut;
                             }
-                            else if (ReadLine() == "No")
+                            if (ReadLine() == "No")
                             {
                                 WriteLine("You may continue...");
                             }
