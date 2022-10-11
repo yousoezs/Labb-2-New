@@ -40,7 +40,7 @@ namespace New_Labb_2
 
             return $"Your Name: {Name}\n" +
                    $"Your Password: {Password}\n" +
-                   $"Your Carts listed products: {ReturnCart()}";
+                   $"Your Carts total products: {ReturnCart()}";
         }
         public bool VerifyPassword(string password)
         {

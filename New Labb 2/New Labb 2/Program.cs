@@ -7,12 +7,12 @@ namespace New_Labb_2
         static void Main(string[] args)
         {
             List<Customer> customers = new List<Customer>() { new("Knatte", "123"), new("Fnatte", "321"), new("Tjatte", "213") };
-            Product Korv = new("Korv", 150);
-            Product Bröd = new("Korv bröd", 200);
-            Product Ketchup = new("Ketchup", 300);
+            Product Korv = new("Korv", 15);
+            Product Bröd = new("Korv bröd", 20);
+            Product Ketchup = new("Ketchup", 30);
 
             Customer? currentCustomer = null;
-            loggedOut:
+        loggedOut:
 
             while (currentCustomer == null)
             {
